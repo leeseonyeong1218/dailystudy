@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 공부 기록</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>오늘의 공부 기록</h1>
+            <p>오늘 공부한 내용을 기록해보세요.</p>
+        </header>
+        <main>
+            <form id="record-form">
+                <div class="form-group">
+                    <label for="type">과목</label>
+                    <select id="type" name="type">
+                        <option value="math">📘 3D그래픽스 </option>
+                        <option value="english">📗 웹앱디자인 </option>
+                        <option value="science">📕 책디자인</option>
+                        <option value="etc">📝 기타</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">날짜</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">공부한 내용</label>
+                    <textarea id="content" name="content" rows="4" placeholder="오늘 어떤 공부를 했나요?" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="reaction">난이도 (선택)</label>
+                    <input type="text" id="reaction" name="reaction" placeholder="예: 쉬움 / 보통 / 어려움">
+                </div>
+                <div class="form-group">
+                    <label>오늘의 집중도</label>
+                    <div class="mood-selector">
+                        <input type="radio" id="mood-high" name="mood" value="높음" checked>
+                        <label for="mood-high">😄 높음</label>
+                        <input type="radio" id="mood-normal" name="mood" value="보통">
+                        <label for="mood-normal">😐 보통</label>
+                        <input type="radio" id="mood-low" name="mood" value="낮음">
+                        <label for="mood-low">😔 낮음</label>
+                        <input type="radio" id="mood-none" name="mood" value="전혀 안 됨">
+                        <label for="mood-none">😡 전혀 안 됨</label>
+                    </div>
+                </div>
+                <button type="submit">공부 저장하기</button>
+            </form>
+
+            <section class="stats-section">
+                <h3>이번 달 공부 통계</h3>
+                <div class="chart-container">
+                    <canvas id="mood-chart"></canvas>
+                </div>
+            </section>
+
+            <section class="records-section">
+                <div class="section-header">
+                    <h2>공부 기록 목록</h2>
+                    <button id="export-excel">엑셀로 내보내기</button>
+                </div>
+                <div class="records-list-container">
+                    <div class="records-header">
+                        <div>과목</div>
+                        <div>공부 내용</div>
+                        <div>난이도</div>     
+                        <div>날짜</div>
+                        <div>집중도</div>
+                    </div>
+                    <div id="records-container">
+               
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2025 오늘의 공부 기록. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
